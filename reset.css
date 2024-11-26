@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montaser', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.romantic-title {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.image-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.images-container {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.images-container img {
+    width: 100%;
+    max-width: 100%;
+    display: none; /* Oculta todas as imagens inicialmente */
+}
+
+.images-container img:first-child {
+    display: block; /* Exibe a primeira imagem */
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 2em;
+    z-index: 1;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.romantic-text {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.counter {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Estilos Responsivos */
+@media (max-width: 600px) {
+    .romantic-title {
+        font-size: 2em;
+    }
+
+    .carousel-btn {
+        padding: 8px;
+        font-size: 1.5em;
+    }
+
+    .romantic-text {
+        font-size: 0.9em;
+    }
+
+    .counter {
+        font-size: 1em;
+    }
+}

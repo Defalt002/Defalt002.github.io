@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas ❤️ Livia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montaser:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Título -->
+        <h1 class="romantic-title">Lucas ❤️ Livia</h1>
+
+        <!-- Carrossel de Imagens -->
+        <div class="image-wrapper">
+            <button class="carousel-btn prev-btn">&#10094;</button>
+            <div class="images-container">
+                <img src="imagens/1.jpeg" alt="Foto 1">
+                <img src="imagens/2.jpeg" alt="Foto 2">
+                <img src="imagens/3.jpeg" alt="Foto 3">
+                <img src="imagens/4.jpeg" alt="Foto 4">
+                <img src="imagens/5.jpeg" alt="Foto 5">
+                <img src="imagens/6.jpeg" alt="Foto 6">
+                <img src="imagens/7.jpeg" alt="Foto 7">
+                <img src="imagens/8.jpeg" alt="Foto 8">
+                <img src="imagens/9.jpeg" alt="Foto 9">
+                <img src="imagens/10.jpeg" alt="Foto 10">
+            </div>
+            <button class="carousel-btn next-btn">&#10095;</button>
+        </div>
+
+        <!-- Texto Romântico -->
+        <div class="romantic-text">
+            <p>Livia,
+
+                Nos teus olhos, encontrei o infinito. Como se cada olhar fosse uma página que se vira, me levando cada vez mais fundo na nossa história. Em cada momento que passamos juntos, sinto que escrevemos um novo capítulo desta linda jornada que só nós dois compreendemos. O amor entre nós é como um vento suave: não podemos vê-lo, mas sentimos sua presença a cada toque, a cada sorriso, a cada palavra que trocamos.
+
+                Você, Livia, é a poesia que dá vida ao meu coração, a razão para que cada dia seja mais brilhante que o anterior. Encontrar você foi como encontrar algo que faltava, algo que jamais soube que estava à procura. O amor que você me oferece é simples, mas ao mesmo tempo, poderoso e transformador, como um rio que, sem pressa, vai moldando as paisagens por onde passa.
+                
+                Cada sorriso seu traz consigo uma paz indescritível, como se o mundo inteiro se aquietasse ao nosso redor. E, mesmo que o tempo passe, sei que o que temos não será apagado, porque a verdadeira felicidade está na simplicidade de estarmos juntos, na alegria de compartilhar o que a vida tem a oferecer.
+                
+                Livia, sou imensamente grato por poder caminhar ao seu lado. O amor que sinto por você é mais profundo do que qualquer palavra pode expressar, mais forte do que qualquer sentimento eu jamais tenha experimentado. É uma história única, nossa, e ela continua a se escrever a cada dia que vivemos juntos.
+
+                Eue amo, Livia, com todo o meu ser.</p>
+        </div>
+
+        <!-- Contador de Tempo -->
+        <div class="counter">
+            <h2>Tempo juntos</h2>
+            <p id="time-counter">Calculando...</p>
+        </div>
+    </div>
+
+    <script>
+        const images = document.querySelectorAll('.images-container img');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.style.display = (i === index) ? 'block' : 'none';
+            });
+        }
+
+        document.querySelector('.next-btn').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        });
+
+        document.querySelector('.prev-btn').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        });
+
+        // Inicializa o carrossel mostrando a primeira imagem
+        showImage(currentIndex);
+
+        function calcularDiferenca(dataInicial) {
+            const dataAtual = new Date();
+            const inicio = new Date(dataInicial);
+            
+            let anos = dataAtual.getFullYear() - inicio.getFullYear();
+            let meses = dataAtual.getMonth() - inicio.getMonth();
+            let dias = dataAtual.getDate() - inicio.getDate();
+
+            // Se o número de dias for negativo, precisamos ajustar
+            if (dias < 0) {
+                meses--;
+                const ultimoMes = new Date(dataAtual.getFullYear(), dataAtual.getMonth(), 0);
+                dias += ultimoMes.getDate(); // Adiciona os dias do mês anterior
+            }
+
+            // Se o número de meses for negativo, precisamos ajustar
+            if (meses < 0) {
+                anos--;
+                meses += 12; // Adiciona 12 meses ao cálculo
+            }
+
+            return {
+                anos: anos,
+                meses: meses,
+                dias: dias
+            };
+        }
+
+        const dataInicial = '2023-08-10';
+        const diferenca = calcularDiferenca(dataInicial);
+
+        // Atualiza o conteúdo do elemento com o ID 'time-counter'
+        const timeCounter = document.getElementById('time-counter');
+        timeCounter.textContent = `Tempo Juntos: ${diferenca.anos} anos, ${diferenca.meses} meses e ${diferenca.dias} dias.`;
+    </script>
+</body>
+</html>
